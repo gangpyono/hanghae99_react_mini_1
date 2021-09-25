@@ -1,9 +1,10 @@
 import React from 'react';
-
-const Cards = (props) => {
+import { useSelector } from 'react-redux';
+const Cards = () => {
+  const word_list = useSelector((state) => state.word.vocabulary);
   return (
     <>
-      {props.list.map((card, index) => {
+      {word_list.map((card, index) => {
         return (
           <li key={index}>
             <h2> 단어 : {card.name}</h2>
