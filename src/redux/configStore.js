@@ -4,6 +4,8 @@ import thunk from 'redux-thunk'; // 미들웨어
 
 import word from './modules/word.js';
 
+console.log('configStore');
+
 // 미들웨어들을 묶어준다.
 const middlewares = [thunk];
 // 리듀서들을 묶어준다.

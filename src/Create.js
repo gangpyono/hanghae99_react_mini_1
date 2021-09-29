@@ -11,7 +11,7 @@ const Create = () => {
   const name_ref = React.useRef(null);
   const des_ref = React.useRef(null);
   const ex_ref = React.useRef(null);
-
+  console.log('Create');
   const dispatch = useDispatch();
   let date = new Date();
   return (
@@ -54,6 +54,12 @@ const Create = () => {
               des: des_ref.current.value,
               ex: ex_ref.current.value,
             };
+            if (word.name === '' || word.des === '' || word.ex === '') {
+              alert('모든 값을 입력해주세요');
+
+              return null;
+            }
+
             dispatch(createWordFB(word));
             history.goBack();
           }}

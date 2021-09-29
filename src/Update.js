@@ -12,6 +12,8 @@ const Update = () => {
   const params = useParams();
   const history = useHistory();
 
+  console.log('update');
+
   //const dispatch = useDispatch();
   const index = params.index;
   const word = useSelector((state) => state.word.vocabulary[index]);

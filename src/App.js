@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
 import Button from '@mui/material/Button';
@@ -10,33 +10,33 @@ import Update from './Update';
 
 const App = () => {
   const history = useHistory();
-
+  console.log('APP');
   return (
     <Container>
-      <Route path="/" exact>
-        <Title>나만의 사전</Title>
+      <Switch>
+        <Route path="/" exact>
+          <Title>나만의 사전</Title>
+          <Button
+            variant="contained"
+            onClick={() => {
+              history.push('/Create');
+            }}
+          >
+            단어추가
+          </Button>
+          <CardContainer>
+            <Vocabulary />
+          </CardContainer>
+        </Route>
 
-        <Button
-          variant="contained"
-          onClick={() => {
-            history.push('/Create');
-          }}
-        >
-          단어추가
-        </Button>
+        <Route path="/Create" exact>
+          <Create />
+        </Route>
 
-        <CardContainer>
-          <Vocabulary />
-        </CardContainer>
-      </Route>
-
-      <Route path="/Create" exact>
-        <Create />
-      </Route>
-
-      <Route path="/Update/:index">
-        <Update />
-      </Route>
+        <Route path="/Update/:index">
+          <Update />
+        </Route>
+      </Switch>
     </Container>
   );
 };
@@ -61,7 +61,7 @@ const Title = styled.h1`
 `;
 
 const CardContainer = styled.ul`
-  width: 50vw;
+  width: 80%;
   height: 50vh;
   list-style: none;
   padding: 40px;

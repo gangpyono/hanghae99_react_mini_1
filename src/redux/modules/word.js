@@ -10,6 +10,7 @@ import {
   deleteDoc,
 } from 'firebase/firestore';
 
+console.log('word.js');
 // Actions
 const CREATE = 'word/CREATE';
 const LOAD = 'word/LOAD';
@@ -44,7 +45,7 @@ export const loadWordFB = () => {
     // async로 비동기통신 요청
     const vocabulary_data = await getDocs(collection(db, 'vocabulary')); // 전체데이터를 가져올 수있다. // await로 요청에대한 응답값받아온다.(받을떄까지 기다림)
     const vocabulary = [];
-
+    console.log(vocabulary_data);
     //여기서 forEach는 도큐먼트의 정보들을 하나씩 참조한다.
     vocabulary_data.forEach((word) => {
       vocabulary.push({ id: word.id, ...word.data() });
